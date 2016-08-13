@@ -32,12 +32,13 @@ ALTER TABLE ARTRAD ADD INDEX index_artnr (artnr);
 exit;
 
 # lite om att kopiera filer från Windows till Linux
-Installera ett par bibliotek
-
+1. Installera ett par bibliotek
 
 apt-get install samba-client samba-common
 
 apt-get install cifs-utils
+
+Skapa en katalog tex: mkdir -p /mnt/win
 
 Mount disk genom följande:
 
@@ -58,6 +59,3 @@ cp ART.DBF /home/mittnamn/ART.DBF
 
 # vi använder AdminLTE för att köra bootstrap
 
-
-
-mkdir -p /mnt/win
