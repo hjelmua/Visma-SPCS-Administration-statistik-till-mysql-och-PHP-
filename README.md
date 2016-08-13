@@ -1,4 +1,4 @@
-# Visma-SPCS-Administration-statistik-till-mysql-och-PHP-
+# Visma SPCS Administration statistik till mysql och PHP
 
 Vi behövde en snabbare databasmotor för att få ut statistik och speciella rapporter ur Visma SPCS Administration. 
 Vi vill också använda vanliga språk som PHP för att få ut resultatet. 
