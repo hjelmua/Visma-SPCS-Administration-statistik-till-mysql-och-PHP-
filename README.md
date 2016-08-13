@@ -6,6 +6,7 @@ Det här projektet är till för detta.
 
 #1. Skapa databasen SPCS
 #2. Skapa en användare med rättigheterna (SELECT, UPDATE, INSERT, DELETE, ALTER, and CREATE) till databasen.
+#3. Fyll i värden i filen data.php
 
 # dbftomysql
 För att flytta dbf databasen behöver använder vi dbf2mysql. Den finns tex på Debian för enkel "apt-get install dbf2mysql".
