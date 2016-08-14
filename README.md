@@ -2,7 +2,7 @@
 
 Vi behövde en snabbare databasmotor för att få ut statistik och speciella rapporter ur Visma SPCS Administration. 
 Vi vill också använda vanliga språk som PHP för att få ut resultatet. 
-Det här projektet är till för detta.
+Det här projektet är till för detta. Hjälp gärna till och bygg funktioner...
 
 #1. Skapa databasen SPCS
 #2. Skapa en användare med rättigheterna (SELECT, UPDATE, INSERT, DELETE, ALTER, and CREATE) till databasen.
@@ -59,4 +59,4 @@ cp ARTRAD.DBF /home/mittnamn/ARTRAD.DBF (brukar ta någon minut om filen är sto
 cp ART.DBF /home/mittnamn/ART.DBF
 
 # vi använder AdminLTE för att köra bootstrap
-
+https://github.com/almasaeed2010/AdminLTE/tree/be11566d9539370b196ac85f22a6baf9f42c87cb
