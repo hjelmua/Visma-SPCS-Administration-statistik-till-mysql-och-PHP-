@@ -9,6 +9,9 @@ Det här projektet är till för detta. Hjälp gärna till och bygg funktioner..
 #3. Fyll i värden i filen data.php
 
 # dbftomysql
+Nu finns dbftomysql med i paketet glöm ej att skriva $from_encoding="iso-8859-1"; 
+
+Alternativt installera apt-get
 För att flytta dbf databasen behöver använder vi dbf2mysql. Den finns tex på Debian för enkel "apt-get install dbf2mysql".
 
 Kopiera filerna ARTGRP.DBF, ARTGRP.DBF, ARTRAD.DBF till valfri katalog på servern som har dbf2mysql
