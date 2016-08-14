@@ -22,165 +22,19 @@ while ($row = mysqli_fetch_assoc($result))
 }
 
 
-echo '
-      <script>var areaChartData = {
-      labels: ["2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"],
-      datasets: [
-        {
-          label: " '.$_POST["artikelnr"].' ",
-          fillColor: "rgba(60,141,188,0.9)",
-          strokeColor: "rgba(60,141,188,0.8)",
-          pointColor: "#3b8bba",
-          pointStrokeColor: "rgba(60,141,188,1)",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(60,141,188,1)",
-          data: ['; foreach ($data as $row)
-  {
-  echo " ". $row['TOTALANT'] . ",";
-  } echo ']
-        },
-        {
-          label: " ",
-          fillColor: "rgba(210, 214, 222, 1)",
-          strokeColor: "rgba(210, 214, 222, 1)",
-          pointColor: "rgba(210, 214, 222, 1)",
-          pointStrokeColor: "#c1c7d1",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(220,220,220,1)",
-          data: [1, 1, 1, 1, 1, 1, 1, 1, 1]
-        }
-      ]
-    };
-	
-	
-    var PieData = [
-      '; foreach ($data as $row)
-	  {
-	  echo "{"; 
-	  echo "value:";
-	  echo " ".$row['TOTALANT'] .",";
-	  echo ' color: "#f56954", highlight: "#f56954", label:';
-	  echo " ".$row['yeardat'] ."},";
-	  } 
-      echo '{
-        value: 0,
-        color: "#d2d6de",
-        highlight: "#d2d6de",
-        label: ""
-      }
-    ];	
-		
-	</script>';
-
-
-
 echo '    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
 		Försäljningstatistik för artikel '.$_POST["artikelnr"].'
         <small>Indelat per år</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Charts</a></li>
-        <li class="active">ChartJS</li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-md-6">
-          <!-- AREA CHART -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Area Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="areaChart" style="height:250px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <canvas id="pieChart" style="height:250px"></canvas>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-       
-
-        </div>
-        <!-- /.col (LEFT) -->
-        <div class="col-md-6">
-          <!-- LINE CHART -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Line Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="lineChart" style="height:250px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart" style="height:230px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-        </div>
-        <!-- /.col (RIGHT) -->
-      </div>
-      <!-- /.row -->
-	  
-	  
-	  <div class="row">
-	   <div class="col-md-6">
+         
 	          <div class="box">
 	            <div class="box-body">
 	              <table class="table table-bordered">  
@@ -192,13 +46,106 @@ echo '    <!-- Content Header (Page header) -->
 	  			  echo "<td>" . $row['TOTALANT'] . "</td>";
 	  			  echo "</tr>";
 	  			  }
-	  			echo '</table> </div></div></div></div>
+	  			echo '</table></div></div>
 	  
 
+			                <!-- solid sales graph -->
+			                <div class="box box-solid bg-teal-gradient">
+			                  <div class="box-header">
+			                    <i class="fa fa-th"></i>
+
+			                    <h3 class="box-title">Försäljning per år av artikel '.$_POST["artikelnr"].'</h3>
+
+			                    <div class="box-tools pull-right">
+			                      <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+			                      </button>
+			                      <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+			                      </button>
+			                    </div>
+			                  </div>
+			                  <div class="box-body border-radius-none">
+			                    <div class="chart" id="line-chart" style="height: 250px;"></div>
+			                  </div>
+			                  <!-- /.box-body -->
+
+			                </div>
+			                <!-- /.box -->
+					</div> <!-- /col-md-6-->
+					
+<div class="col-md-6">
+
+<!-- DONUT CHART -->
+ <div class="box box-danger">
+   <div class="box-header with-border">
+     <h3 class="box-title">Försäljning per år av artikel '.$_POST["artikelnr"].'</h3>
+
+     <div class="box-tools pull-right">
+       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+       </button>
+       <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+     </div>
+   </div>
+   <div class="box-body chart-responsive">
+     <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+   </div>
+   <!-- /.box-body -->
+ </div>
+ <!-- /.box -->
+
+</div> <!-- /col-md-6-->
+
+
+
+
+</div></div>
     </section>
     <!-- /.content -->';
-    
 
+echo "\n";    
+echo "    <script>
+        // LINE CHART
+    new Morris.Line({
+          element: 'line-chart',
+          resize: true,
+    data: [";
+    
+foreach ($data as $row)
+  {
+  echo "{ year:";
+  echo " '". $row['yeardat'] ."',";
+  echo "value: ". $row['TOTALANT'] ."},";
+  }
+echo "
+        { year: '2007', value: 1 }
+      ],
+            xkey: 'year',
+            ykeys: ['value'],
+          labels: ['".$_POST['artikelnr']."'],
+          lineColors: ['#3c8dbc'],
+          hideHover: 'auto'
+        });
+    </script>";
+ echo "\n";      
+    echo "<script>
+    //DONUT CHART
+    new Morris.Donut({
+      element: 'sales-chart',";
+    echo  'resize: true,
+      colors: ["#3c8dbc", "#f56954", "#00a65a", "#FFFF00", "#FFBF00", "#8000FF", "#58FA58"],
+      data: [';
+      foreach ($data as $row)
+        {
+        echo '{ label: "';
+        echo "". $row['yeardat'] ."";
+	echo  '",';
+        echo " value: ". $row['TOTALANT'] ."},";
+        }
+       echo '{label: "2007", value: 0}';
+
+  echo '    ],';
+echo "      hideHover: 'auto'
+    });
+</script>";
 
 }
 
