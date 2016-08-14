@@ -2,7 +2,7 @@
 
 Vi behövde en snabbare databasmotor för att få ut statistik och speciella rapporter ur Visma SPCS Administration. 
 Vi vill också använda vanliga språk som PHP för att få ut resultatet. 
-Det här projektet är till för detta.
+Det här projektet är till för detta. Hjälp gärna till och bygg functioner...
 
 #1. Skapa databasen SPCS
 #2. Skapa en användare med rättigheterna (SELECT, UPDATE, INSERT, DELETE, ALTER, and CREATE) till databasen.
