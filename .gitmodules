@@ -1,3 +1,9 @@
 [submodule "AdminLTE"]
 	path = AdminLTE
 	url = https://github.com/almasaeed2010/AdminLTE.git
+[submodule "DBFToMySQL"]
+	path = DBFToMySQL
+	url = https://github.com/doofpot/DBFToMySQL.git
+[submodule "php-xbase"]
+	path = php-xbase
+	url = https://github.com/hisamu/php-xbase.git
