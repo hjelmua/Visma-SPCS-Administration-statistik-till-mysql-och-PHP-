@@ -6,16 +6,34 @@ Det här projektet är till för detta. Hjälp gärna till och bygg funktioner..
 
 #1. Skapa databasen SPCS
 #2. Skapa en användare med rättigheterna (SELECT, UPDATE, INSERT, DELETE, ALTER, and CREATE) till databasen.
-#3. Fyll i värden i filen data.php
+#3. Fyll i samma värden i filen data.php
 
 # dbftomysql
-Nu finns dbftomysql med i paketet glöm ej att skriva $from_encoding="iso-8859-1"; 
+Nu finns dbftomysql med i paketet. OBS! glöm ej att fylla i $from_encoding="iso-8859-1"; 
 
-Alternativt installera apt-get
-För att flytta dbf databasen behöver använder vi dbf2mysql. Den finns tex på Debian för enkel "apt-get install dbf2mysql".
+(Alternativt installera med apt-get på debian med flera)
 
-Kopiera filerna ARTGRP.DBF, ARTGRP.DBF, ARTRAD.DBF till valfri katalog på servern som har dbf2mysql
 
+Kopiera filerna ARTGRP.DBF, ARTGRP.DBF, ARTRAD.DBF och KUND.DBF till valfri katalog på servern (fyll platsen på i katalogen i filen config.php.sample i katalogen DBFToMySQL och byt sedan namn på filen till config.php.
+
+$db_uname = 'username';
+
+$db_passwd = 'password';
+
+$db_name = 'database';
+
+$db_host = 'localhost';
+
+$xbase_dir = '/home/user/path/to/dbf/files';
+
+$die_on_mysql_error = false; // when investigating errors, set this to true
+
+$from_encoding="iso-8859-1"; //Encoding of database, e.g. CP866 or empty, if convert is not required
+
+Kör "php dbf-import.php"
+
+
+#Alternativt om man använder apt-get för att installera dbf2mysql
 dbf2mysql -h localhost -U myusername -P mypassword -d SPCS -t ARTGRP -c -f ./ARTGRP.DBF
 
 dbf2mysql -h localhost -U myusername -P mypassword -d SPCS -t ART -c -f ./ARTGRP.DBF
@@ -24,6 +42,7 @@ dbf2mysql -h localhost -U myusername -P mypassword -d SPCS -t ARTRAD -c -f ./ART
 
 sedan (man får importera om ARTRAD när statistiken ska köras och där också indexera filen)
 
+# skapa index (oavsett metod ovan) 
 mysql -u myusername -p SPCS
 ALTER TABLE ARTRAD ADD INDEX index_dat (dat);
 
@@ -33,7 +52,11 @@ ALTER TABLE ARTRAD ADD INDEX index_kredit_fl (kredit_fl);
 
 ALTER TABLE ARTRAD ADD INDEX index_artnr (artnr);
 
+ALTER TABLE KUND ADD INDEX index_postnr (postnr);
 exit;
+
+#Lägg till tabellen SE som ligger i katalogen mysqldb 
+Innehållet i filen kommer från www.geonames.org. Jag har modifierat länskoderna för att passa detta tex är AB ändrat till SE-AB (för Stockholm)
 
 # lite om att kopiera filer från Windows till Linux
 1. Installera ett par bibliotek
