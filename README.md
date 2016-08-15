@@ -86,3 +86,8 @@ cp ART.DBF /home/mittnamn/ART.DBF
 
 # vi använder AdminLTE för att köra bootstrap
 https://github.com/almasaeed2010/AdminLTE/tree/be11566d9539370b196ac85f22a6baf9f42c87cb
+
+##Screenshots
+________
+
+![Startpage](screenshot.jpg?raw=true "The start page")
